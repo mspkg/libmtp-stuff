@@ -760,6 +760,8 @@ void LIBMTP_Set_Debug(int level)
  */
 void LIBMTP_Init(void)
 {
+  int use_mtpz;
+
   const char *env_debug = getenv("LIBMTP_DEBUG");
   if (env_debug) {
     const long debug_flags = strtol(env_debug, NULL, 0);
@@ -2095,6 +2097,8 @@ LIBMTP_mtpdevice_t *LIBMTP_Open_Raw_Device_Uncached(LIBMTP_raw_device_t *rawdevi
 LIBMTP_mtpdevice_t *LIBMTP_Open_Raw_Device(LIBMTP_raw_device_t *rawdevice)
 {
   LIBMTP_mtpdevice_t *mtp_device = LIBMTP_Open_Raw_Device_Uncached(rawdevice);
+
+  int use_mtpz;
 
   if (mtp_device == NULL)
     return NULL;
